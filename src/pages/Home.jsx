@@ -6,7 +6,6 @@ import Hero from '../components/Hero'
 function Home() {
   return (
     <div>
-      Main home welcome to my ecommerce
       <section id="hero">
         <Hero/>
       </section>

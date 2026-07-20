@@ -11,12 +11,12 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-amber-50 shadow">
 
-      <div className="flex items-center justify-between h-20 px-6">
+      <div className="flex items-center justify-between h-27 px-6">
 
         <img
           src={Logo}
           alt="Arpegio"
-          className="h-16"
+          className="h-40"
         />
 
         <button
