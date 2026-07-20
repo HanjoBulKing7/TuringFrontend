@@ -1,10 +1,11 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 
-const MainLay = () => {
+const MainLay = ({children}) => {
   return (
     <div>
         <Navbar/>
+        {children}
     </div>
   )
 }
