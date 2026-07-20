@@ -6,7 +6,7 @@ import { useSignup } from '../../hooks/useSignup';
 import { useNavigate } from 'react-router-dom';
 
 
-function SignUpForm() {
+function SignUpForm({onToggle}) {
 
     const { register, handleSubmit, reset, formState: { errors} } = useForm({ mode: "onTouched"});
     const { handleSignup, loading } = useSignup();
@@ -14,11 +14,11 @@ function SignUpForm() {
 
     const onSubmit = async (data) => {
       const success = await handleSignup(data);
-      if (success) navigate("/");
+      if (success) navigate("/auth");
     };
 
   return (
-    <div className='h-110 w-80 bg-white rounded-lg flex flex-col items-center mt-10 border-2 border-black/75'>
+    <div className='h-120 w-80 bg-white rounded-lg flex flex-col items-center mt-10 border-2 border-black/75'>
       <h2 className='text-3xl font-sans font-light'>Crea una cuenta </h2>
         <form className="flex flex-col gap-7 bg-white p-6 rounded-md" onSubmit={handleSubmit(onSubmit)} >
           <FloatingInput
@@ -67,6 +67,13 @@ function SignUpForm() {
               validate: (value, formValues) => value === formValues.password || "Las contraseñas no coinciden"
             }}
           />
+
+          <p className="text-sm text-gray-500 mt-4">
+            ¿Ya tienes cuenta?{" "}
+            <button type="button" onClick={onToggle} className="text-blue-600 hover:underline">
+              Inicia sesión
+            </button>
+          </p>
 
           <button type="submit" disabled={loading} className="bg-blue-600 text-white rounded-md py-2 mt-2 disabled:opacity-50">
             {loading ? "Creando..." : "Crear cuenta"}

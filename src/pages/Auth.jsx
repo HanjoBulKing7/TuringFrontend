@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SignUpForm from '../components/auth/SignUpForm';
 import LoginForm from '../components/auth/LoginForm';
 
 function Auth() {
-  const token = "myVeryOwnPersonalDummyCustomToken";
+  const [isLogin, setIsLogin] = useState(false); // false = signup por defecto
+
   return (
-    <div className='flex items-center justify-center h-full ' >
-        {token ? <SignUpForm /> : <LoginForm />}
-    </div> 
-  )
+    <div className='flex-1 flex items-center justify-center'>
+      {isLogin ? (
+        <LoginForm onToggle={() => setIsLogin(false)} />
+      ) : (
+        <SignUpForm onToggle={() => setIsLogin(true)} />
+      )}
+    </div>
+  );
 }
 
-export default Auth
+export default Auth;

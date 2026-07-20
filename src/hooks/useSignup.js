@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signup } from "../services/authService";
+import { signup , login } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
@@ -11,7 +11,6 @@ export function useSignup() {
     setLoading(true);
     try {
       const result = await signup(formData);
-      setSession(result.token ?? result, formData.username);
       toast.success("¡Cuenta creada con éxito!");
       return true;
     } catch (err) {
@@ -23,5 +22,19 @@ export function useSignup() {
     }
   };
 
-  return { handleSignup, loading };
+  const handleLogin = async (formData) => {
+    setLoading(true);
+    try{
+        const res = await login(formData);
+        setSession(res.token)
+        return true;
+    }catch(err){
+      const message = err.response?.data?.message || 'Error al iniciar sesión';
+      toast.error(message)
+    }finally{
+      setLoading(false)
+    }
+  }
+
+  return { handleSignup, handleLogin, loading };
 }
