@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Logo from '../assets/img/Arpegio-Logo.jpeg'
+import Logo from '../../assets/img/Arpegio-Logo.jpeg'
 import { RxCross2 } from 'react-icons/rx';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaUser } from "react-icons/fa";
@@ -11,12 +11,12 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-amber-50 shadow">
 
-      <div className="flex items-center justify-between h-27 px-6">
+      <div className="flex items-center justify-between h-25 px-6 xl:h-30">
 
         <img
           src={Logo}
           alt="Arpegio"
-          className="h-40"
+          className="h-25 xl:h-30"
         />
 
         <button
@@ -42,7 +42,7 @@ const Navbar = () => {
         <ul className="flex flex-col items-center gap-6 py-6 md:hidden text-lg">
           <li><a href='#about'>Sobre nosotros</a></li>
           <li><a href="#catalog">Catálogo</a></li>
-          <li><Link to='/login'><FaUser className='text-black text-2xl'/></Link></li>
+          <li><Link to='/auth'><FaUser className='text-black text-2xl'/></Link></li>
         </ul>
       )}
 

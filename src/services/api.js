@@ -2,7 +2,7 @@ import axios from 'axios'
 // Import backend url 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 // Create API instance with axios
-export const api = axtios.create({
+export const api = axios.create({
     baseURL: BACKEND_URL,
     headers: { 'Content-Type' : 'application/json'},
 });
@@ -17,3 +17,6 @@ api.interceptors.request.use(
     },
     (error) => Promise.reject(error)
 );
+
+
+export default api;

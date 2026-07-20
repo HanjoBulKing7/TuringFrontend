@@ -8,12 +8,14 @@ import { Routes , Route } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './components/About'
 import Catalog from './components/Catalog'
+import Auth from './pages/Auth'
 
 function App() {
   return (
     <MainLay>
       <Routes>
         <Route path='/' element={ <Home/> }  />
+        <Route path='/auth' element={ <Auth />} />
       </Routes>
     </MainLay>
   )
