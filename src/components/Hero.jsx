@@ -17,9 +17,9 @@ function Hero() {
           talento al siguiente nivel.
         </p>
 
-        <button className='mt-8 bg-amber-900 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition'>
-          Ver catálogo
-        </button>
+        <p className='w-fit mt-8 bg-amber-900 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition'>
+          <a href='#catalog'>Ver catálogo</a>
+        </p>
       </div>
 
       <img
