@@ -11,12 +11,12 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-amber-50 shadow">
 
-      <div className="flex items-center justify-between h-20 px-6">
+      <div className="flex items-center justify-between h-27 px-6">
 
         <img
           src={Logo}
           alt="Arpegio"
-          className="h-16"
+          className="h-40"
         />
 
         <button
@@ -31,18 +31,18 @@ const Navbar = () => {
         </button>
 
         <ul className="hidden md:flex items-center gap-10 text-lg">
-          <li><Link to='/about'>Acerca de nosotros</Link></li>
-          <li><Link to='/catalog'>Catálogo</Link></li>
-          <li><Link to='/auth'><FaUser className='text-black text-2xl'/></Link></li>
+          <li><a href='#about'>Acerca de nosotros</a></li>
+          <li><a href='#catalog'>Catálogo</a></li>
+          <li><Link to='/auth'><FaUser className='text-black text-3xl'/></Link></li>
         </ul>
 
       </div>
 
       {isOpen && (
         <ul className="flex flex-col items-center gap-6 py-6 md:hidden text-lg">
-          <li>Sobre nosotros</li>
-          <li>Catálogo</li>
-          <li><FaUser className='text-black text-2xl'/></li>
+          <li><a href='#about'>Sobre nosotros</a></li>
+          <li><a href="#catalog">Catálogo</a></li>
+          <li><Link to='/login'><FaUser className='text-black text-2xl'/></Link></li>
         </ul>
       )}
 
