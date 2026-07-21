@@ -11,7 +11,8 @@ import InstrumentModalDetails from './shared/InstrumentModalDetails'
 
 function Catalog({ categoryId = null }) {
   const { isAdmin } = useAuth();
-  const { content, totalPages, page, setPage, loading, refetch } = useInstruments(categoryId);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const { content, totalPages, page, setPage, loading, refetch } = useInstruments(selectedCategory);
   const [categories, setCategories] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
@@ -77,6 +78,34 @@ function Catalog({ categoryId = null }) {
           baterías y mucho más para encontrar el instrumento ideal.
         </p>
 
+        <div className="flex flex-wrap justify-center gap-3 mt-8">
+            <button
+                onClick={() => setSelectedCategory(null)}
+                className={`px-4 py-2 rounded-full ${
+                    selectedCategory === null
+                        ? "bg-amber-600 text-white"
+                        : "bg-zinc-800 text-amber-100"
+                }`}
+            >
+                Todos
+            </button>
+
+            {categories.map(category => (
+                <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`px-4 py-2 rounded-full ${
+                        selectedCategory === category.id
+                            ? "bg-amber-600 text-white"
+                            : "bg-zinc-800 text-amber-100"
+                    }`}
+                >
+                    {category.name}
+                </button>
+            ))}
+
+        </div>
+        
         <div className="bg-black py-12 px-6 mt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {content.map(instrument => (

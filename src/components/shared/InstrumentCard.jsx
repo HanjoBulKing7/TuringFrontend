@@ -8,8 +8,8 @@ function InstrumentCard({ instrument, onEdit, isAdmin , onClick }) {
   return (
     <div className="bg-zinc-900 border border-amber-600/30 rounded-lg overflow-hidden hover:border-amber-500/60 transition-all
      hover:shadow-lg hover:shadow-amber-900/30"
-      onClick={onClick}
      >
+      <div onClick={onClick}>
         <img src={imageUrl || "https://via.placeholder.com/400x300?text=Guitar"} alt={name} className="w-full h-48 object-cover" />
       <div className="p-4">
         <h3 className="font-serif text-amber-100 text-lg">{name}</h3>
@@ -20,7 +20,9 @@ function InstrumentCard({ instrument, onEdit, isAdmin , onClick }) {
             {stock > 0 ? `Stock: ${stock}` : "Agotado"}
           </span>
         </div>
-      {
+      </div>
+      </div>
+            {
         isAdmin &&
           <div className='flex w-full justify-end'> 
             <button onClick={onEdit}>
@@ -28,7 +30,6 @@ function InstrumentCard({ instrument, onEdit, isAdmin , onClick }) {
             </button>
           </div>
       }
-      </div>
     </div>
   );
 }
