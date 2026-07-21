@@ -17,7 +17,7 @@ function LoginForm({onToggle }) {
 
 
   return (
-    <div className='h-110 w-80 bg-white rounded-lg flex flex-col items-center mt-10 border-2 border-black/75'>
+    <div className='h-110 w-80 bg-white rounded-lg flex flex-col items-center mt-10 pt-5 border-2 border-black/75'>
         <h2 className='text-3xl font-sans font-light'>Ingresa a tu cuenta </h2>
         <form className="flex flex-col gap-7 bg-white p-6 rounded-md" onSubmit={handleSubmit(onSubmit)} >
           <FloatingInput

@@ -18,7 +18,7 @@ function SignUpForm({onToggle}) {
     };
 
   return (
-    <div className='h-120 w-80 bg-white rounded-lg flex flex-col items-center mt-10 border-2 border-black/75'>
+    <div className='h-125 w-80 bg-white rounded-lg flex flex-col items-center mt-10 p-5 border-2 border-black/75'>
       <h2 className='text-3xl font-sans font-light'>Crea una cuenta </h2>
         <form className="flex flex-col gap-7 bg-white p-6 rounded-md" onSubmit={handleSubmit(onSubmit)} >
           <FloatingInput
@@ -75,7 +75,7 @@ function SignUpForm({onToggle}) {
             </button>
           </p>
 
-          <button type="submit" disabled={loading} className="bg-blue-600 text-white rounded-md py-2 mt-2 disabled:opacity-50">
+          <button type="submit" disabled={loading} className="bg-blue-600 text-white rounded-md py-2 mt-1 disabled:opacity-50">
             {loading ? "Creando..." : "Crear cuenta"}
           </button>
         </form>
