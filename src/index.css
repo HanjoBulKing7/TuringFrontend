@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@theme {
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  --font-tangerine: "Tangerine", sans-serif;
+}

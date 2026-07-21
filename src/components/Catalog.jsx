@@ -7,6 +7,7 @@ import Pagination from './Pagination';
 import toast from 'react-hot-toast';
 import InstrumentModal from './shared/InstrumentModal';
 import CategoryModal from './shared/CategoryModal';
+import InstrumentModalDetails from './shared/InstrumentModalDetails'
 
 function Catalog({ categoryId = null }) {
   const { isAdmin } = useAuth();
@@ -15,12 +16,15 @@ function Catalog({ categoryId = null }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
   const [editingInstrument, setEditingInstrument] = useState(null);
+  const [ detailsModal , setDetailsModal ] = useState(false);
+  const [ currentInstrument , setCurrentInstrument] = useState(null)
 
   useEffect(() => {
     getCategories().then(setCategories).catch(() => {});
   }, []);
 
   const handleEdit = (instrument) => {
+    console.log("Edit instrument triggered")
     setEditingInstrument(instrument);
     setModalOpen(true);
   };
@@ -34,6 +38,12 @@ function Catalog({ categoryId = null }) {
     } catch {
       toast.error("Error al eliminar");
     }
+  };
+
+  const handleDetailsModal = (instrument) => {
+    
+    setDetailsModal(true);
+    setCurrentInstrument(instrument);
   };
 
   if (loading) return <p className="text-center text-zinc-400 py-10">Cargando...</p>;
@@ -76,6 +86,7 @@ function Catalog({ categoryId = null }) {
                 isAdmin={isAdmin}
                 onEdit={() => handleEdit(instrument)}
                 onDelete={() => handleDelete(instrument.id)}
+                onClick={ ()=> handleDetailsModal(instrument)}
               />
             ))}
           </div>
@@ -99,6 +110,16 @@ function Catalog({ categoryId = null }) {
           onSuccess={() => getCategories().then(setCategories)}
         />
       )}
+      {
+        detailsModal  &&
+        (
+          <InstrumentModalDetails
+            isOpen={detailsModal}
+            onClose={() => setDetailsModal(false)}
+            initialData={currentInstrument}
+          />
+        )
+      }
 
     </section>
   );

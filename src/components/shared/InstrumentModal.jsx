@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 function InstrumentModal({ isOpen, onClose, onSuccess, categories, initialData = null }) {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const isEditing = !!initialData;
+  const isEditing = !!initialData; // Check if there is sent data to edit the record 
 
   useEffect(() => {
     if (initialData) reset(initialData);
