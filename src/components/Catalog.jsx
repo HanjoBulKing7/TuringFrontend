@@ -5,13 +5,15 @@ import { getCategories, deleteInstrument } from '../services/instrumentService';
 import InstrumentCard from './shared/InstrumentCard';
 import Pagination from './Pagination';
 import toast from 'react-hot-toast';
-import InstrumentModal from './InstrumentModal';
+import InstrumentModal from './shared/InstrumentModal';
+import CategoryModal from './shared/CategoryModal';
 
 function Catalog({ categoryId = null }) {
   const { isAdmin } = useAuth();
   const { content, totalPages, page, setPage, loading, refetch } = useInstruments(categoryId);
   const [categories, setCategories] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [categoryModalOpen, setCategoryModalOpen] = useState(false);
   const [editingInstrument, setEditingInstrument] = useState(null);
 
   useEffect(() => {
@@ -49,6 +51,14 @@ function Catalog({ categoryId = null }) {
               + Agregar instrumento
             </button>
           )}
+          {isAdmin && (
+            <button
+              onClick={() => setCategoryModalOpen(true)}
+              className="bg-zinc-700 text-white px-4 py-2 rounded-md"
+            >
+              + Agregar categoría
+            </button>
+          )}
         </div>
 
         <p className='mt-6 text-center text-gray-600 max-w-3xl mx-auto'>
@@ -57,7 +67,7 @@ function Catalog({ categoryId = null }) {
           baterías y mucho más para encontrar el instrumento ideal.
         </p>
 
-        <div className="bg-black py-12 px-6">
+        <div className="bg-black py-12 px-6 mt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {content.map(instrument => (
               <InstrumentCard
@@ -82,6 +92,14 @@ function Catalog({ categoryId = null }) {
           initialData={editingInstrument}
         />
       )}
+      {isAdmin && (
+        <CategoryModal
+          isOpen={categoryModalOpen}
+          onClose={() => setCategoryModalOpen(false)}
+          onSuccess={() => getCategories().then(setCategories)}
+        />
+      )}
+
     </section>
   );
 }

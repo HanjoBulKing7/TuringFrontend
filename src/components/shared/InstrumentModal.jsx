@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
-import { createInstrument, updateInstrument } from "../services/instrumentService";
+import { createInstrument, updateInstrument } from "../../services/instrumentService";
 import toast from "react-hot-toast";
 
 function InstrumentModal({ isOpen, onClose, onSuccess, categories, initialData = null }) {
