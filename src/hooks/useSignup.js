@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 export function useSignup() {
   const [loading, setLoading] = useState(false);
-  const { login: setSession } = useAuth();
+  const { login: setSession } = useAuth(); /// Change the name of the method on the hook
 
   const handleSignup = async (formData) => {
     setLoading(true);
@@ -25,8 +25,8 @@ export function useSignup() {
   const handleLogin = async (formData) => {
     setLoading(true);
     try{
-        const res = await login(formData);
-        setSession(res.token)
+        const token = await login(formData);
+        setSession(token, formData.username)
         return true;
     }catch(err){
       const message = err.response?.data?.message || 'Error al iniciar sesión';
