@@ -1,8 +1,9 @@
 import { isAxiosError } from 'axios';
 import react from 'react'
 import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
-function InstrumentCard({ instrument, onEdit, isAdmin , onClick }) {
+function InstrumentCard({ instrument, onEdit, onDelete, isAdmin , onClick }) {
   const { name, model, price, stock, imageUrl } = instrument;
 
   return (
@@ -24,9 +25,12 @@ function InstrumentCard({ instrument, onEdit, isAdmin , onClick }) {
       </div>
             {
         isAdmin &&
-          <div className='flex w-full justify-end'> 
+          <div className='flex w-full justify-between px-10 pb-4'> 
             <button onClick={onEdit}>
                     <FaEdit className='text-white text-2xl'/>
+            </button>
+            <button onClick={onDelete} >
+                <MdDelete className='text-red-600 text-2xl' />
             </button>
           </div>
       }

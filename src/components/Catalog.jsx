@@ -25,7 +25,6 @@ function Catalog({ categoryId = null }) {
   }, []);
 
   const handleEdit = (instrument) => {
-    console.log("Edit instrument triggered")
     setEditingInstrument(instrument);
     setModalOpen(true);
   };
@@ -57,7 +56,7 @@ function Catalog({ categoryId = null }) {
           {isAdmin && (
             <button
               onClick={() => { setEditingInstrument(null); setModalOpen(true); }}
-              className="bg-amber-600 text-white px-4 py-2 rounded-md text-2xl"
+              className="bg-amber-600 text-white px-4 py-2 rounded-md"
             >
               + Agregar instrumento
             </button>
