@@ -3,7 +3,7 @@ import { MdCancel } from "react-icons/md";
 function InstrumentModal({ isOpen, onClose, initialData = null }) {
   
 
-    const { name, model, stock, price, imageUrl } = initialData;
+    const { name, model, description, stock, price, imageUrl } = initialData;
 
     if (!isOpen) return null;
 
@@ -42,9 +42,7 @@ function InstrumentModal({ isOpen, onClose, initialData = null }) {
                 </p>
 
                 <p className="mt-6 text-zinc-300 leading-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse potenti. Instrumento ideal para músicos
-                principiantes y profesionales.
+                    {description}
                 </p>
 
                 <div className="mt-8 flex justify-between items-center">
